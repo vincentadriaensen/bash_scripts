@@ -45,7 +45,7 @@ run_validation_checks(){
 
 search_term(){
 	term=$1
-	result=$(find $location -type f -print0 | xargs -0 grep -l "$term")
+	result=$(find $location -type f -print0 | xargs -0 grep -i -l "$term")
 
 	if [ ! -z "$result" ]
 	then
