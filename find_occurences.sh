@@ -44,8 +44,10 @@ run_validation_checks(){
 }
 
 search_term(){
-	term=$1
-	result=$(find $location -type f -print0 | xargs -0 grep -i -l "$term")
+	term=$@
+	echo "--- Searching for $term ---"
+
+	result=$(find $location -type f -print0 | xargs -0 grep -i -l "\"$term\"")
 
 	if [ ! -z "$result" ]
 	then
@@ -65,7 +67,6 @@ run () {
 	then
 		while IFS= read -r search_term
 		do
-			echo "--- Searching for $search_term ---"
 			search_term $search_term
 		done < "$input_file"
 	else
