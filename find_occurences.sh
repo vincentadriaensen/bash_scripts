@@ -47,7 +47,7 @@ search_term(){
 	term=$@
 	echo "--- Searching for $term ---"
 
-	result=$(find $location -type f -print0 | xargs -0 grep -i -l "\"$term\"")
+	result=$(find $location -type f -print0 | xargs -0 grep -i -l "$term")
 
 	if [ ! -z "$result" ]
 	then
